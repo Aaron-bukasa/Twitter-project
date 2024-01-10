@@ -1,25 +1,29 @@
 import Avatar from "./Avatar";
 import TweetActions from "./TweetActions";
 import Image from "./Image";
+import { Children } from "react";
 
-export default function Tweet({avatarUrl, imgUrl, title}) {
+export default function Tweet({avatarUrl, imgUrl, title, value, urlTweetImg, times}) {
     return (
         <li className="tweet">
             <Avatar avatarUrl={avatarUrl}/>
             <div className="tweet-content">
                 <div className="tweet-title">
-                    <p className="tweet-title-author"></p>
+                    <p className="tweet-title-author">{title}</p>
                     <p>
                         <Image imgUrl={imgUrl}/>
                     </p>
-                    <p className="tweet-title-details">{title}</p>
+                    <p className="tweet-title-details">
+                        <span>@{title} . </span>
+                        <span>{times}</span>
+                    </p>
                 </div>
                 <div className="tweet-body">
                     <p className="tweet-text"> 
-                    President Joe Biden touted a new agreement reached with the European Union to ease Trump-era tariffs on aluminum and steel as a "major breakthrough" that would serve to both strengthen the US steel industry and combat the global climate crisis.
+                    {value}
                     </p>
                     <div className="tweet-image">
-                        <img src="" alt=""  />
+                        <img src={urlTweetImg} alt="" />
                     </div>
                 </div>
                 <TweetActions />
