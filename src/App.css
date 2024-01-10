@@ -1,4 +1,8 @@
-/* HEADER */
+.timeline {
+  max-width: 600px;
+  margin: 0 auto;
+  border: 1px solid var(--border-color);
+}
 .header {
   font-weight: 700;
   font-size: 1.2rem;
@@ -23,6 +27,7 @@
   width: 100%;
 }
 .tweet-editor-input {
+  font-size: 1.2rem;
   height: 50px;
   width: 100%;
   background-color: var(--black-color);
@@ -46,16 +51,28 @@
 .tweet {
   display: flex;
   column-gap: var(--pdg-min);
+  min-width: 100%;
   padding: 5px var(--pdg-min);
   border-bottom: 1px solid var(--border-color);
 }
 .tweet-title {
   display: flex;
 }
+.tweet-title-details {
+  color: var(--gray-color);
+}
+.tweet-content {
+  width: 100%;
+}
+.tweet-image img {
+  margin-block: var(--pdg-min);
+  border-radius: 36px;
+}
 .tweet-actions {
   display: flex;
   column-gap: 10px;
   justify-content: space-between;
+  width: 80%;
   padding-inline: 5px;
 }
 .tweet-action {

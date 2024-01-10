@@ -1,19 +1,11 @@
-import TweetEditor from "./componants/TweetEditor"
+import Timeline from './componants/Timeline';
 import './App.css';
-import Header from "./componants/Header";
-import Tweets from "./componants/Tweets";
 
-
-
-function App() {
+export default function App() {
 
   return (
    <>
-      <Header />
-      <TweetEditor />
-      <Tweets />
+      <Timeline />
    </>
   )
 }
-
-export default App
