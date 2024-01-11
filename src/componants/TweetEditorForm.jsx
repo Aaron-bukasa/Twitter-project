@@ -17,7 +17,7 @@ function TweetEditorForm() {
                     <Image imgUrl={iconEmoji}/>
                     <Image imgUrl={iconSchedule}/>
                 </div>
-                <button className="button">Tweet</button>
+                <button className="btn">Tweet</button>
             </div>
         </div>
     );

@@ -1,6 +1,22 @@
+.sidebar {
+  font-size: 1.1rem;
+  font-weight: 700;
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--pdg-min);
+}
+.menu-btn {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  column-gap: var(--pdg-min);
+}
+.menu-btn:hover {
+  color: var(--blue-color);
+}
+
 .timeline {
   max-width: 600px;
-  margin: 0 auto;
   border: 1px solid var(--border-color);
 }
 .header {
@@ -42,10 +58,11 @@
 .tweet-editor-actions img {
   margin-right: 12px;
 }
-.button {
+.btn {
+  text-align: center;
   padding: 10px;
   background-color: var(--blue-color);
-  border-radius: 30%;
+  border-radius: 25px;
   border: none;
 }
 .tweet {
@@ -64,7 +81,11 @@
 .tweet-content {
   width: 100%;
 }
+.tweet-image {
+  width: 100%;
+}
 .tweet-image img {
+  width: 95%;
   margin-block: var(--pdg-min);
   border-radius: 36px;
 }
@@ -72,7 +93,7 @@
   display: flex;
   column-gap: 10px;
   justify-content: space-between;
-  width: 80%;
+  max-width: 80%;
   padding-inline: 5px;
 }
 .tweet-action {
