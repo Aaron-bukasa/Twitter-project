@@ -1,45 +1,38 @@
 [
     {
-        "id": 1,
         "tweetAvatarUrl": "../assets/CNN.png",
-        "author": "CNN",
+        "tweet-title-author": "CNN",
         "date": "7min",
         "imgUrl": "../assets/icons/Verified.svg",
-        "text": "President Joe Biden touted a new agreement reached with the European Union to ease Trump-era tariffs on aluminum and steel as a \"major breakthrough\" that would serve to both strengthen the US steel industry and combat the global climate crisis."
+        "tweet-text": "President Joe Biden touted a new agreement reached with the European Union to ease Trump-era tariffs on aluminum and steel as a \"major breakthrough\" that would serve to both strengthen the US steel industry and combat the global climate crisis."
     },
     {
-        "id": 2,
         "tweetAvatarUrl": "../assets/icons/Twitter.svg",
-        "author": "NY Times",
+        "tweet-title-author": "NY Times",
         "imgUrl": "../assets/icons/Verified.svg",
         "date": "2h",
-        "text": "Gardening boomed during the pandemic. Six Black writers share how it has helped them re-establish, and reimagine, a connection to cultivation and the land",
-        "imgTweet": "../assets/image 3.png"
+        "tweet-text": "Gardening boomed during the pandemic. Six Black writers share how it has helped them re-establish, and reimagine, a connection to cultivation and the land"
     },
     {
-        "id": 3,
         "tweetAvatarUrl": "../assets/icons/Twitter.svg",
-        "author": "Twitter",
+        "tweet-title-author": "Twitter",
         "imgUrl": "../assets/icons/Verified.svg",
         "date": "Oct 29",
-        "text": "BIG NEWS lol jk still Twitter"
+        "tweet-text": "BIG NEWS lol jk still Twitter"
     },
     {
-        "id": 4,
         "tweetAvatarUrl": "../assets/icons/Twitter.svg",
-        "author": "Twitter",
+        "tweet-title-author": "Twitter",
         "imgUrl": "../assets/icons/Verified.svg",
         "date": "Oct 4",
-        "text": "hello literally everyone"
+        "tweet-text": "hello literally everyone"
     },
     {
-        "id": 5,
         "tweetAvatarUrl": "../assets/icons/Twitter.svg",
-        "author": "Twitter",
+        "tweet-title-author": "Twitter",
         "imgUrl": "../assets/icons/Verified.svg",
         "date": "Oct 4",
-        "text": "hello literally everyone",
-        "imgTweet": "../assets/image 3.png"
+        "tweet-text": "hello literally everyone"
     }
   ]
   

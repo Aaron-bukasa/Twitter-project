@@ -101,3 +101,93 @@
   align-items: center;
   column-gap: var(--pdg-min);
 }
+.aside {
+  width: 380px;
+}
+.aside > * {
+  width: 100%;
+  margin-bottom: var(--pdg-min);
+}
+.aside-label {
+  position: relative;
+  width: 100%;
+  height: 40px;
+}
+.aside-span {
+  position: absolute;
+  left: 2px;
+  top: 50%;
+}
+.aside-input-span {
+  position : absolute;
+  top: 50%;
+}
+#aside-input {
+  width: 100%;
+  height: 40px;
+  background-color: var(--bg-aside);
+  border-radius: 25px;
+  border: none;
+}
+.aside input::placeholder {
+  padding-left: var(--pdg-max);
+}
+.tranding {
+  background-color: var(--bg-aside);
+  padding: var(--pdg-min);
+  margin-block: var(--pdg-min);
+  border-radius: 25px;
+}
+.tranding-head {
+  display: flex;
+  justify-content: space-between;
+}
+.trand {
+  display: flex;
+  justify-content: space-between;
+  margin-block: var(--pdg-min);
+}
+.trand-info {
+  color: var(--gray-color);
+}
+.follow {
+  background-color: var(--bg-aside);
+  padding: var(--pdg-min);
+  border-radius: 25px;
+}
+.follow-content {
+  list-style: none;
+}
+.follow-content li {
+  display: flex;
+  justify-content: space-between;
+  margin-block: var(--pdg-min);
+}
+.follow-content li > div {
+  display: flex;
+}
+.btn-follow {
+  font-weight: 700;
+  padding: 0 15px;
+  border-radius: 15px;
+  background-color: var(--light-color);
+}
+.acount {
+  color: var(--gray-color);
+}
+.more {
+  font-weight: 700;
+  color: var(--blue-color);
+}
+.follow-more:hover {
+  cursor: pointer;
+}
+.footer {
+  color: var(--gray-color);
+  line-height: 1.5;
+}
+.footer a {
+  text-decoration: none;
+  color: var(--gray-color);
+  margin-right: 12px;
+}
