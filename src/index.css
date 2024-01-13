@@ -28,7 +28,24 @@ body {
 }
 #container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  column-gap: var(--pdg-max);
   padding-block: 30px;
+}
+a {
+  text-decoration: none;
+  color: var(--gray-color);
+}
+a:hover svg {
+  stroke: var(--blue-color);
+}
+ul {
+  list-style: none;
+}
+@media screen and (min-width: 768px) {
+  #container {
+   flex-direction: row;
+   column-gap: max(2vw, 15px);
+   padding-inline: var(--pdg-min);
+  }
 }

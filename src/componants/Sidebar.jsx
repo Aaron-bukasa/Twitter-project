@@ -9,9 +9,9 @@ import lists from "../assets/icons/Lists.svg";
 import profile from "../assets/icons/Profile.svg";
 import more from "../assets/icons/More.svg";
 
-const Side = ({imgUrl, imgText}) => {
+const Side = ({imgUrl, imgText, styleClass}) => {
     return (
-        <div className="menu-btn">
+        <div className='menu-btns'>
             <Image imgUrl={imgUrl} />
             <span>{imgText}</span>
         </div>
@@ -21,7 +21,7 @@ const Side = ({imgUrl, imgText}) => {
 export default function Sidebar() {
     return (
         <div className="sidebar">
-            <Side imgUrl={twitter}/>
+            <Side imgUrl={twitter} />
             <Side imgUrl={home} imgText="Home" />
             <Side imgUrl={explore} imgText="Explore" />
             <Side imgUrl={notification} imgText="Notifications" />
@@ -30,7 +30,7 @@ export default function Sidebar() {
             <Side imgUrl={lists} imgText="Lists" />
             <Side imgUrl={profile} imgText="Profile" />
             <Side imgUrl={more} imgText="More" />
-            <div className="btn">Tweet</div>
+            <div className="btn menu-btns" >Tweet</div>
         </div>
     );
 }
