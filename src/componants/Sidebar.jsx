@@ -9,9 +9,9 @@ import lists from "../assets/icons/Lists.svg";
 import profile from "../assets/icons/Profile.svg";
 import more from "../assets/icons/More.svg";
 
-const Side = ({imgUrl, imgText}) => {
+const Side = ({imgUrl, imgText, styleClass}) => {
     return (
-        <div className="menu-btn">
+        <div className={styleClass}>
             <Image imgUrl={imgUrl} />
             <span>{imgText}</span>
         </div>
@@ -21,16 +21,16 @@ const Side = ({imgUrl, imgText}) => {
 export default function Sidebar() {
     return (
         <div className="sidebar">
-            <Side imgUrl={twitter}/>
-            <Side imgUrl={home} imgText="Home" />
-            <Side imgUrl={explore} imgText="Explore" />
-            <Side imgUrl={notification} imgText="Notifications" />
-            <Side imgUrl={messages} imgText="Messages" />
-            <Side imgUrl={bookmarks} imgText="Bookmarks" />
-            <Side imgUrl={lists} imgText="Lists" />
-            <Side imgUrl={profile} imgText="Profile" />
-            <Side imgUrl={more} imgText="More" />
-            <div className="btn">Tweet</div>
+            <Side imgUrl={twitter} styleClass="menu-btn" />
+            <Side imgUrl={home} imgText="Home" styleClass="menu-btn menu-btn-mobile" />
+            <Side imgUrl={explore} imgText="Explore" styleClass="menu-btn menu-btn-mobile" />
+            <Side imgUrl={notification} imgText="Notifications" styleClass="menu-btn menu-btn-mobile" />
+            <Side imgUrl={messages} imgText="Messages" styleClass="menu-btn menu-btn-mobile" />
+            <Side imgUrl={bookmarks} imgText="Bookmarks" styleClass="menu-btn" />
+            <Side imgUrl={lists} imgText="Lists" styleClass="menu-btn" />
+            <Side imgUrl={profile} imgText="Profile" styleClass="menu-btn menu-btn-mobile" />
+            <Side imgUrl={more} imgText="More" styleClass="menu-btn" />
+            <div className="btn menu-btn" >Tweet</div>
         </div>
     );
 }

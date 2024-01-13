@@ -28,7 +28,27 @@ body {
 }
 #container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   column-gap: var(--pdg-max);
   padding-block: 30px;
+}
+a {
+  text-decoration: none;
+  color: var(--gray-color);
+}
+ul {
+  list-style: none;
+}
+@media screen and (min-width: 899px) {
+  body {
+    color: var(--light-color);
+    background-color: var(--dark-color);
+  }
+  #container {
+    display: flex;
+    justify-content: center;
+    column-gap: var(--pdg-max);
+    padding-block: 30px;
+  }
 }
