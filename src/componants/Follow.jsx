@@ -1,6 +1,6 @@
 import Avatar from './fonctionnels/Avatar';
 import Image from './fonctionnels/Image';
-import data from '../assets/tweetsJSON.json';
+import datas from '../assets/tweets-x.json';
 import iconVerified from '../assets/icons/Verified.svg';
 
 function Follow() {
@@ -8,19 +8,19 @@ function Follow() {
     const FollowContent = () => {
         return (
             <ul className="follow-content">
-            {data.map((follow) => (
-                <li key={follow.id}>
+            {datas.map((data) => (
+                <li key={data.id}>
                     <div>
-                        <Avatar avatarUrl={follow.tweetAvatarUrl}/>
+                        <Avatar avatarUrl={data.author_avatar}/>
                         <div>
-                            <h4>{follow.author}</h4>
+                            <h4>{data.source}</h4>
                             <span>
                                 <Image imgUrl={iconVerified}/>
                             </span>
-                            <span className='acount'>@{follow.author}</span>
+                            <span className='acount'>@{data.source}</span>
                         </div>
                     </div>  
-                    <button className='btn btn-follow'>
+                    <button className='btn-follow'>
                         Follow
                     </button> 
                 </li>
@@ -35,7 +35,6 @@ function Follow() {
                 <h2>Who to follow</h2>
             </div>
             <FollowContent />
-            <div className="more">Show more</div>
         </div>
     )
 }

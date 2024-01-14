@@ -31,7 +31,6 @@ const Tranding = () => {
                 <Trand country="Turkey" title="SQUID" tweets="2,066" />
                 <Trand country="Turkey" title="SQUID" tweets="2,066" />
             </div>
-            <div className="more">Show more</div>
         </div>
     )
 }
