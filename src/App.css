@@ -52,6 +52,11 @@
 }
 
 /* RESPONSIVE NAVIGATION MOBILE */
+@media screen and (min-width: 786px) {
+  .sidebar-head-mobile > div:last-child {
+    display: none;
+  }
+}
 @media screen and (min-width: 1024px) {
   .sidebar-mobile {
     display: none;
@@ -79,7 +84,7 @@
 
 /* TIMELINE*/
 .timeline {
-  max-width: 600px;
+  max-width: 700px;
   border: 1px solid var(--border-color);
   margin: 63px auto 0 auto;
 }
@@ -174,11 +179,14 @@
 }
 .tweet-image {
   width: 100%;
+  height: 250px;
 }
 .tweet-image img {
-  width: 95%;
-  margin-block: var(--pdg-min);
-  border-radius: 36px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  margin-top: var(--pdg-min);
+  border-radius: 15px;
 }
 .tweet-actions {
   display: flex;
@@ -186,6 +194,7 @@
   justify-content: space-between;
   max-width: 80%;
   padding-inline: 5px;
+  margin-top: 30px;
 }
 .tweet-action {
   display: flex;
@@ -194,6 +203,11 @@
 }
 
 /* RESPONSIVE TIMELINE*/
+@media screen and (min-width: 786px) {
+  .timeline {
+    margin: 35px auto 0;
+  }
+}
 @media screen and (min-width: 1024px) {
   .timeline {
     margin: 0 auto;
@@ -210,12 +224,12 @@
 }
 
 /* ASIDE */
-.aside {
+.local-aside {
   display: none;
 }
-
 /* tranding */
 .tranding {
+  width: 100%;
   padding: var(--pdg-min) 30px;
   margin-top: 90px;
 }
@@ -233,9 +247,19 @@
 }
 
 /* follow */
+.aside-pg .follow {
+  margin-top: 45px;
+  background-color: blue;
+}
 .follow {
+  width: 100%;
   padding: var(--pdg-min);
   margin-top: 10px;
+}
+.follow .avatar {
+  width: 35px;
+  height: 35px;
+  margin-right: 5px;
 }
 .follow-content {
   list-style: none;
@@ -249,11 +273,16 @@
   display: flex;
 }
 .btn-follow {
-  color: var(--dark-color);
   font-weight: 600;
-  padding: 0 10px;
+  height: 30px;
+  width: 60px;
+  color: var(--dark-color);
   border-radius: 15px;
   background-color: var(--light-color);
+}
+.btn-follow:hover {
+  cursor: pointer;
+  opacity: 0.7;
 }
 .more {
   font-weight: 700;
@@ -274,19 +303,20 @@
 
 /* RESPONSIVE ASIDE*/
 @media screen and (min-width: 786px) {
-  .aside {
+  .local-aside {
     display: block;
     min-width: 280px;
     max-width: 380px;
+    margin-top: 35px;
   }
-   .aside > * {
+  .local-aside  > * {
     width: 100%;
     margin-bottom: var(--pdg-min);
   }
-  .aside > label {
+  .local-aside  > label {
     position: relative;
   }
-  .aside > label img {
+  .local-aside > label img {
     position: absolute;
     top: -1px;
     left: 10px;
@@ -311,63 +341,15 @@
     align-items: center;
     column-gap: var(--pdg-min);
   }
- /* .tranding {
+  .local-tranding, .local-follow {
     background-color: var(--bg-aside);
     padding: var(--pdg-min);
     margin-block: var(--pdg-min);
     border-radius: 25px;
   }
-  .tranding-head {
-    display: flex;
-    justify-content: space-between;
+}
+@media  screen and (min-width: 1024px) {
+  .local-aside {
+    margin-top: 0;
   }
-  .trand {
-    display: flex;
-    justify-content: space-between;
-    margin-block: var(--pdg-min);
-  }
-  .trand-info {
-    color: var(--gray-color);
-  }
-  .follow {
-    background-color: var(--bg-aside);
-    padding: 20px;
-    border-radius: 25px;
-  }
-  .follow-content {
-    list-style: none;
-  }
-  .follow-content li {
-    display: flex;
-    justify-content: space-between;
-    margin-block: var(--pdg-min);
-  }
-  .follow-content li > div {
-    display: flex;
-  }
-  .btn-follow {
-    font-weight: 700;
-    padding: 0 15px;
-    border-radius: 15px;
-    background-color: var(--light-color);
-  }
-  .acount {
-    color: var(--gray-color);
-  }
-  .more {
-    font-weight: 700;
-    color: var(--blue-color);
-  }
-  .follow-more:hover {
-    cursor: pointer;
-  }
-  .footer {
-    color: var(--gray-color);
-    line-height: 1.5;
-  }
-  .footer a {
-    text-decoration: none;
-    color: var(--gray-color);
-    margin-right: 12px;
-  } */
 }
