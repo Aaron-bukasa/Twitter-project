@@ -8,13 +8,14 @@ import bookmarks from "../assets/icons/Bookmarks.svg";
 import lists from "../assets/icons/Lists.svg";
 import profile from "../assets/icons/Profile.svg";
 import more from "../assets/icons/More.svg";
+import { Link } from "react-router-dom";
 
 const Side = ({imgUrl, imgText, styleClass}) => {
     return (
-        <div className='menu-btns'>
+        <Link to={imgText} className='menu-btns'>
             <Image imgUrl={imgUrl} />
             <span>{imgText}</span>
-        </div>
+        </Link>
     )
 }
 
@@ -22,7 +23,7 @@ export default function Sidebar() {
     return (
         <div className="sidebar">
             <Side imgUrl={twitter} />
-            <Side imgUrl={home} imgText="Home" />
+            <Side link="timeline" imgUrl={home} txt="Home" />
             <Side imgUrl={explore} imgText="Explore" />
             <Side imgUrl={notification} imgText="Notifications" />
             <Side imgUrl={messages} imgText="Messages" />

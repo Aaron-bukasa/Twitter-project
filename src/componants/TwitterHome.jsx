@@ -8,6 +8,7 @@ import Avatar from './fonctionnels/Avatar';
 import Image from './fonctionnels/Image';
 import datas from '../assets/tweets-x.json';
 import iconVerified from '../assets/icons/Verified.svg';
+import { Link } from 'react-router-dom';
 
 export default function TwitterHome() {
   return (
@@ -55,7 +56,7 @@ function Tranding() {
                   <div className='trand-info'>{tweets} tweets</div>
               </div>
               <div className="trand-more">
-                  <img src={more2} alt="more" />
+                  <img src={icon} alt="more" />
               </div>
           </div>
       )
@@ -75,7 +76,7 @@ function Tranding() {
               <Trand country="Turkey" title="SQUID" tweets="2,066" />
               <Trand country="Turkey" title="SQUID" tweets="2,066" />
           </div>
-          <div className="more">Show more</div>
+          <Link to='trending' className="more">Show more</Link>
       </div>
   )
 }
@@ -98,7 +99,7 @@ function Follow() {
                     </div>  
                     <button className='btn-follow'>
                         Follow
-                    </button> 
+                    </button>
                 </li>
             ))}
         </ul>
@@ -111,7 +112,7 @@ function Follow() {
                 <h2>Who to follow</h2>
             </div>
             <FollowContent />
-            <div className="more">Show more</div>
+            <Link to='follow' className="more">Show more</Link>
         </div>
     )
 }
