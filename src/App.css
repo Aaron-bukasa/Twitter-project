@@ -1,4 +1,4 @@
-/* NAVIGATION MOBILE */
+/* NAVIGATION MOBILE
 .sidebar-head-mobile {
   width: 100%;
   padding: 0 var(--pdg-min);
@@ -52,7 +52,7 @@
 }
 
 /* RESPONSIVE NAVIGATION MOBILE */
-@media screen and (min-width: 786px) {
+/* @media screen and (min-width: 786px) {
   .sidebar-head-mobile > div:last-child {
     display: none;
   }
@@ -61,7 +61,7 @@
   .sidebar-mobile {
     display: none;
   }
-}
+} */ */
 
 
 /* SIDEBAR DESKTOP */
