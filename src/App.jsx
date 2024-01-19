@@ -1,4 +1,3 @@
-import Home from './componants/sidebar/Home';
 import Explore from "./componants/sidebar/Explore";
 import Notifications from "./componants/sidebar/Notifications"
 import Messages from "./componants/sidebar/Messages"
@@ -6,59 +5,116 @@ import Bookmarks from "./componants/sidebar/Bookmarks"
 import Lists from "./componants/sidebar/Lists"
 import Profile from "./componants/sidebar/Profile"
 import More from "./componants/sidebar/More"
-import Tranding from './componants/Tranding';
-import Follow from './componants/Follow';
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
-import Avatar from './componants/fonctionnels/Avatar';
-import ProfileIcon from './assets/profil_full.png'
-import './App.css';
-import Header from './componants/Header';
-import Aside from './componants/Aside';
 import Sidebar from './componants/Sidebar';
 import Footer from './componants/fonctionnels/Footer';
 import Side from './componants/fonctionnels/Side';
 import Input from './componants/fonctionnels/Input';
 import iconSearch from './assets/icons/Search.svg';
 import Timeline from './componants/Timeline';
+import './App.css';
+import more2 from './assets/icons/More-2.svg';
+import settings from './assets/icons/Settings.svg';
+import iconVerified from "./assets/icons/Verified.svg"
+import datas from "./assets/tweets-x.json"
+import Avatar from "./componants/fonctionnels/Avatar";
 
 export default function App() {
-
   return (
-   <div id='container'>
+   <div id='container' className="relative">
       <BrowserRouter>
+        <Sidebar />
         <Routes>
           <Route path='/' element={<Timeline />} />
-          {/* <Route path='/explore' element={<Explore />} />
+          <Route path='/explore' element={<Explore />} />
           <Route path='/notifications' element={<Notifications/>} />
           <Route path='/messages' element={<Messages />} />
           <Route path='/bookmarks' element={<Bookmarks />} />
           <Route path='/lists' element={<Lists />} />
           <Route path='/profile' element={<Profile />} />
-          <Route path='/more' element={<More />} /> */}
-          <Route path='/sidebar' element={<Sidebar />} />
+          <Route path='/more' element={<More />} />
         </Routes>
-        <div>
-          <Sidebar />
-          <div className="home-pg-aside">
-            <div className='home-pg-aside-head'>
-              <Input urlImage={iconSearch} placeholderInput="Search Twitter" />
-            </div>
-            <div className="home-pg-aside-content">
-                <div>
-                  <Tranding />
-                  <Side link="tranding" txt="Show more" />
-                </div>
-                <div>
-                  <Follow />
-                  <Side link="follow" txt="Show more" />
-                </div>
-            </div>
-            <div className='home-pg-aside-foot'>
-                <Footer />
-            </div>
+        <div className="min-w-342px max-w-380px mt-5 home-aside fixed top-0">
+          <div className='home-aside-head'>
+            <Input urlImage={iconSearch} placeholderInput="Search Twitter" idInput='search' />
           </div>
+          <div className="">
+            <HomeTranding />
+            <HomeFollow />
+          </div>
+            <Footer />
         </div>
       </BrowserRouter>
    </div>
   )
+}
+
+function HomeTranding() {    
+    return (
+        <div className="bg-gray-800 rounded-2xl p-3 my-3">
+            <div className="flex justify-between mb-4">
+                <h3 className="text-lg font-semibold">Trends for you</h3>
+                <div>
+                    <img src={settings} alt="settings" />
+                </div>
+            </div>
+            <div className="flex flex-col justify-between gap-y-2.5">
+                <Trand country="Turkey" title="SQUID" tweets="2,066" />
+                <Trand country="Turkey" title="SQUID" tweets="2,066" />
+                <Trand country="Turkey" title="SQUID" tweets="2,066" />
+                <Trand country="Turkey" title="SQUID" tweets="2,066" />
+            </div>
+            <Side link="tranding" txt="Show more" styleClass='text-blue-700' />
+        </div>
+    )
+}
+
+function Trand({country, title, tweets}) {
+  return (
+      <div className='flex justify-between'>
+          <div>
+              <div className='text-gray-600'>Tending in {country}</div>
+              <h3>#{title}</h3>
+              <div className='text-gray-600'>{tweets} tweets</div>
+          </div>
+          <div className="trand-more">
+              <img src={more2} alt="more" />
+          </div>
+      </div>
+  )
+}
+
+function HomeFollow() {
+  return (
+      <div className="bg-gray-800 rounded-2xl p-3 my-4">
+          <h2 className="mb-5 text-lg font-semibold">Who to follow</h2>
+          <MapFollow />
+          <Side link="follow" txt="Show more" />
+      </div>
+  )
+}
+
+function MapFollow() {
+  let datasLength = datas.slice(0, 5);
+    return (
+        <ul className="flex flex-col justify-between gap-y-3.5">
+        {datasLength.map((data) => (
+            <li key={data.id} className="flex justify-between">
+                <div className="flex gap-x-2">
+                    <Avatar avatarUrl={data.author_avatar}/>
+                    <div>
+                      <div className="flex">
+                        <span>{data.source}</span>
+                        <span>
+                           <img src={iconVerified} alt="verified" />
+                        </span>
+                      </div>
+                        <div className='acount'>@{data.source}</div>
+                    </div>
+                </div>  
+               <Side txt='Follow' />
+            </li>
+        ))}
+    </ul>
+    )
 }
