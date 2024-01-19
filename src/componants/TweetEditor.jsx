@@ -4,7 +4,7 @@ import imageAvatar from "../assets/profil_full.png"
 
 function TweetEditor() {
     return (
-        <div className="tweet-editor">
+        <div className="bg-yellow tweet-editor">
             <Avatar avatarUrl={imageAvatar}/>
             <TweetEditorForm />
         </div>

@@ -8,7 +8,7 @@ export default function Input({idInput, typeInput, urlImage, placeholderInput, i
     const newImg = urlImage && <img src={urlImage} alt={idInput} />
 
     return (
-        <label htmlFor={idInput}>
+        <label htmlFor={idInput} className={idInput}>
             {newImg}
             <input type={typeInput} id={idInput}  placeholder={placeholderInput} style={inputStyle}/>
         </label>
