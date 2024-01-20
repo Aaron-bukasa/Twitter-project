@@ -1,7 +1,7 @@
-function Image({imgUrl, altImg}) {
+function Image({imgUrl, altImg, className}) {
 
     return (
-        <img src={imgUrl} alt={altImg} />
+        <img src={imgUrl} alt={altImg} className={className}/>
     )
 }
 

@@ -31,7 +31,7 @@ export default function App() {
           <Route path='/messages' element={<Messages />} />
           <Route path='/bookmarks' element={<Bookmarks />} />
           <Route path='/lists' element={<Lists />} />
-          <Route path='/profile' element={<Profile />} />
+          <Route path='/profile/*' element={<Profile />} />
           <Route path='/more' element={<More />} />
         </Routes>
         <div className="min-w-342px max-w-380px mt-5 home-aside fixed top-0">
@@ -64,7 +64,7 @@ function HomeTranding() {
                 <Trand country="Turkey" title="SQUID" tweets="2,066" />
                 <Trand country="Turkey" title="SQUID" tweets="2,066" />
             </div>
-            <Side link="tranding" txt="Show more" styleClass='text-blue-700' />
+            <Side link="tranding" txt="Show more" styleClass="more" />
         </div>
     )
 }
@@ -86,10 +86,10 @@ function Trand({country, title, tweets}) {
 
 function HomeFollow() {
   return (
-      <div className="bg-gray-800 rounded-2xl p-3 my-4">
+      <div className="bg-gray-800 rounded-2xl p-3 my-4 home-follow">
           <h2 className="mb-5 text-lg font-semibold">Who to follow</h2>
           <MapFollow />
-          <Side link="follow" txt="Show more" />
+          <Side link="follow" txt="Show more" styleClass="more" />
       </div>
   )
 }

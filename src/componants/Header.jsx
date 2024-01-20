@@ -1,5 +1,5 @@
-import Avatar from "./fonctionnels/Avatar";
-import avatarImg from '../assets/profil_full.png';
+// import Avatar from "./fonctionnels/Avatar";
+// import avatarImg from '../assets/profil_full.png';
 import Side from "./fonctionnels/Side";
 
 export default function Header() {
