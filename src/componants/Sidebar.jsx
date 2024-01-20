@@ -14,13 +14,12 @@ import iconMore2 from "../assets/icons/More-2.svg";
 import Image from "./fonctionnels/Image";
 import { createPortal } from "react-dom";
 
-
 export default function Sidebar() {
     return (
         <div className="flex-shrink-0 sidebar">
             <div className="sidebar-menu">
                 <Side link="" imgUrl={iconTwitter} />
-                <Side link="" imgUrl={iconHome} txt="Home" styleClass="inline-block" />
+                <Side link="" imgUrl={iconHome} txt="Home" />
                 <Side link="explore" imgUrl={iconExplore} txt="Explore" />
                 <Side link="notifications" imgUrl={iconNotification} txt="Notifications" />
                 <Side link="messages" imgUrl={iconMessages} txt="Messages" />
@@ -33,8 +32,8 @@ export default function Sidebar() {
             </div>
             <div className="flex items-center gap-x-4 mb-4 login-out">
                 <Avatar avatarUrl={imgProfile} />
-                <div className="w-full flex justify-between sm:hidden xl:block">
-                    <div>
+                <div className="w-full justify-between sm:hidden xl:flex">
+                    <div className="text-sm">
                         <p>Ardev</p>
                         <p className="text-gray-500">@bukasa_mba</p>
                     </div>
