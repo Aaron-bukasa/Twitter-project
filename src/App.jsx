@@ -21,7 +21,7 @@ import Avatar from "./componants/fonctionnels/Avatar";
 
 export default function App() {
   return (
-   <div id='container' className="relative">
+   <div id='container' className="flex justify-center relative">
       <BrowserRouter>
         <Sidebar />
         <Routes>
@@ -31,10 +31,10 @@ export default function App() {
           <Route path='/messages' element={<Messages />} />
           <Route path='/bookmarks' element={<Bookmarks />} />
           <Route path='/lists' element={<Lists />} />
-          <Route path='/profile/*' element={<Profile />} />
+          <Route path='/bukasa_mba/*' element={<Profile />} />
           <Route path='/more' element={<More />} />
         </Routes>
-        <div className="min-w-342px max-w-380px mt-5 home-aside fixed top-0">
+        <div className="hidden min-w-342px max-w-380px ml-5 mt-5 home-aside fixed top-0">
           <div className='home-aside-head'>
             <Input urlImage={iconSearch} placeholderInput="Search Twitter" idInput='search' />
           </div>
@@ -51,8 +51,8 @@ export default function App() {
 
 function HomeTranding() {    
     return (
-        <div className="bg-gray-800 rounded-2xl p-3 my-3">
-            <div className="flex justify-between mb-4">
+        <div className="bg-[#16181c] rounded-2xl my-3">
+            <div className="flex justify-between mb-4 p-2">
                 <h3 className="text-lg font-semibold">Trends for you</h3>
                 <div>
                     <img src={settings} alt="settings" />
@@ -64,18 +64,20 @@ function HomeTranding() {
                 <Trand country="Turkey" title="SQUID" tweets="2,066" />
                 <Trand country="Turkey" title="SQUID" tweets="2,066" />
             </div>
-            <Side link="tranding" txt="Show more" styleClass="more" />
+            <div className="px-2 pb-4">
+              <Side link="tranding" txt="Show more" styleClass="more" />
+            </div>
         </div>
     )
 }
 
 function Trand({country, title, tweets}) {
   return (
-      <div className='flex justify-between'>
+      <div className='flex justify-between hover:bg-[#1d1f23] cursor-pointer p-3'>
           <div>
-              <div className='text-gray-600'>Tending in {country}</div>
+              <div className='text-gray-400'>Tending in {country}</div>
               <h3>#{title}</h3>
-              <div className='text-gray-600'>{tweets} tweets</div>
+              <div className='text-gray-400'>{tweets} tweets</div>
           </div>
           <div className="trand-more">
               <img src={more2} alt="more" />
@@ -86,22 +88,24 @@ function Trand({country, title, tweets}) {
 
 function HomeFollow() {
   return (
-      <div className="bg-gray-800 rounded-2xl p-3 my-4 home-follow">
-          <h2 className="mb-5 text-lg font-semibold">Who to follow</h2>
+      <div className="bg-[#16181c] rounded-2xl my-4 home-follow">
+          <h2 className="mb-5 p-2 text-lg font-semibold">Who to follow</h2>
           <MapFollow />
-          <Side link="follow" txt="Show more" styleClass="more" />
+          <div className="px-2 py-4">
+            <Side link="follow" txt="Show more" styleClass="more" />
+          </div>
       </div>
   )
 }
 
 function MapFollow() {
-  let datasLength = datas.slice(0, 5);
+  let datasLength = datas.slice(0, 4);
     return (
         <ul className="flex flex-col justify-between gap-y-3.5">
         {datasLength.map((data) => (
-            <li key={data.id} className="flex justify-between">
+            <li key={data.id} className="flex justify-between items-center hover:bg-[#1d1f23] cursor-pointer p-2">
                 <div className="flex gap-x-2">
-                    <Avatar avatarUrl={data.author_avatar}/>
+                    <Avatar avatarUrl={data.author_avatar} />
                     <div>
                       <div className="flex">
                         <span>{data.source}</span>

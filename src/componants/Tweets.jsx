@@ -1,7 +1,9 @@
 import Tweet from "./fonctionnels/Tweet";
 import datas from '../assets/tweets-x.json';
+import { useState } from "react";
 
 export default function Tweets() {
+
     return (
         <ul className="tweets">
           {datas.map((data) => (

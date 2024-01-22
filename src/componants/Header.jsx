@@ -1,12 +1,9 @@
-// import Avatar from "./fonctionnels/Avatar";
-// import avatarImg from '../assets/profil_full.png';
 import Side from "./fonctionnels/Side";
 
 export default function Header() {
     return (
         <div className="sticky top-0 py-2 bg-black header">
             <div className="flex justify-between items-center">
-                {/* <Avatar avatarUrl={avatarImg} /> */}
                 <p>Home</p>
                 <div className="font-bold text-base">Ardev</div>
                 <div>

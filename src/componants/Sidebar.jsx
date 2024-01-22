@@ -8,30 +8,47 @@ import iconLists from "../assets/icons/Lists.svg";
 import iconProfile from "../assets/icons/Profile.svg";
 import iconMore from "../assets/icons/More.svg";
 import Side from "./fonctionnels/Side";
-import Avatar from "./fonctionnels/Avatar";
-import imgProfile from "../assets/profil_full.png";
 import iconMore2 from "../assets/icons/More-2.svg";
 import Image from "./fonctionnels/Image";
 import { createPortal } from "react-dom";
+import ImgProfile from "./fonctionnels/ImgProfile";
 
 export default function Sidebar() {
     return (
-        <div className="flex-shrink-0 sidebar">
-            <div className="sidebar-menu">
-                <Side link="" imgUrl={iconTwitter} />
-                <Side link="" imgUrl={iconHome} txt="Home" />
-                <Side link="explore" imgUrl={iconExplore} txt="Explore" />
-                <Side link="notifications" imgUrl={iconNotification} txt="Notifications" />
-                <Side link="messages" imgUrl={iconMessages} txt="Messages" />
-                <Side link="bookmarks" imgUrl={iconBookmarks} txt="Bookmarks" />
-                <Side link="lists" imgUrl={iconLists} txt="Lists" />
-                <Side link="profile" imgUrl={iconProfile} txt="Profile" />
-                <Side link="more" imgUrl={iconMore} txt="More" />
-                <div className="btn tweet">Tweet</div>
+        <div className="flex-shrink-0 xl:min-w-64 sidebar">
+            <div className="flex justify-between sm:flex-col nav">
+                <div className="hidden sm:block">
+                    <Side link="" imgUrl={iconTwitter} styleClass="hover:bg-[#181818]" />
+                </div>
+                <div>
+                    <Side link="" imgUrl={iconHome} txt="Home" styleClass="hover:bg-[#181818]" />
+                </div>
+                <div>
+                    <Side link="explore" imgUrl={iconExplore} txt="Explore" styleClass="hover:bg-[#181818]" />
+                </div>
+                <div>
+                    <Side link="notifications" imgUrl={iconNotification} txt="Notifications" styleClass="hover:bg-[#181818]" /> 
+                </div>
+                <div>
+                    <Side link="messages" imgUrl={iconMessages} txt="Messages" styleClass="hover:bg-[#181818]" />
+                </div>
+                <div>
+                    <ide link="bookmarks" imgUrl={iconBookmarks} txt="Bookmarks" styleClass="hover:bg-[#181818]" />
+                </div>
+                <div className="hidden sm:block">
+                    <Side link="lists" imgUrl={iconLists} txt="Lists" styleClass="hhover:bg-[#181818]" />
+                </div>
+                <div>
+                    <Side link="bukasa_mba" imgUrl={iconProfile} txt="Profile" styleClass="hover:bg-[#181818]" />
+                </div>
+                <div className="hidden sm:block">
+                    <Side link="more" imgUrl={iconMore} txt="More" styleClass="hover:bg-[#181818]" />
+                </div>
+                <div className="hidden sm:block bg-blue-500 text-center py-3.5 rounded-full hover:opacity-80 hover:cursor-pointer">Tweet</div>
                 <ModaleAddTweet />
             </div>
-            <div className="flex items-center gap-x-4 mb-4 login-out">
-                <Avatar avatarUrl={imgProfile} />
+            <div className="flex items-center gap-x-4 mb-4 p-3 rounded-2xl max-w-64 login-out hover:bg-[#181818] hover:cursor-pointer">
+                <ImgProfile size={70} />
                 <div className="w-full justify-between sm:hidden xl:flex">
                     <div className="text-sm">
                         <p>Ardev</p>

@@ -1,6 +1,6 @@
 import { Children } from "react";
 
-export default function Input({idInput, typeInput, urlImage, placeholderInput, inputStyle}) {
+export default function Input({idInput, typeInput, urlImage, placeholderInput, inputStyle, className}) {
 
     typeInput = typeInput ? typeInput : 'text';
     placeholderInput && placeholderInput;
@@ -10,7 +10,7 @@ export default function Input({idInput, typeInput, urlImage, placeholderInput, i
     return (
         <label htmlFor={idInput} className={idInput}>
             {newImg}
-            <input type={typeInput} id={idInput}  placeholder={placeholderInput} style={inputStyle}/>
+            <input type={typeInput} id={idInput} placeholder={placeholderInput} style={inputStyle}/>
         </label>
     )
 }
