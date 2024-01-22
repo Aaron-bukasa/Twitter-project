@@ -13,7 +13,13 @@ import ImgProfile from "../fonctionnels/ImgProfile";
 import datas from "../../assets/tweets-x.json"
 import iconVerified from "../../assets/icons/Verified.svg"
 
+
 export default function Profile() {
+
+    const after = {
+        after: "content-['_↗'] block absolute w-full h-full bg-red-400"
+    }
+
     return (
         <div className="max-w-screen-md w-full">
             <Header />
@@ -23,7 +29,9 @@ export default function Profile() {
                 </div>
                 <div className="flex justify-between items-start px-4" >
                     <div className="relative bottom-16 ">
-                        <ImgProfile size={150} />
+                        <div className="profil-img-Hover">
+                            <ImgProfile size={150} />
+                        </div>
                     </div>
                     <Side txt="Editer le profil" />
                 </div>
@@ -51,7 +59,7 @@ export default function Profile() {
                 </div>
            </div>
            <div>
-                <div className="flex justify-between text-sm font-bold">
+                <div className="flex justify-between text-xl font-bold">
                     <Side link="" txt="Post" styleClass="profil-anchor" />
                     <Side link="reponses" txt="Poponses" styleClass="profil-anchor" />
                     <Side link="tweetsManquants" txt="Tweets Manquants" styleClass="profil-anchor" />
@@ -93,7 +101,9 @@ function HomeFollow() {
         {datasLength.map((data) => (
             <li key={data.id} className="flex justify-between">
                 <div className="flex gap-x-2">
-                    <Avatar avatarUrl={data.author_avatar}/>
+                    <div className="shrink-0">
+                        <Avatar avatarUrl={data.author_avatar}/>
+                    </div>
                     <div>
                         <div className="flex">
                         <span>{data.source}</span>

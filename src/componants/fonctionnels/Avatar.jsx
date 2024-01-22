@@ -1,7 +1,10 @@
-const Avatar = ({avatarUrl}) => {
+const Avatar = ({avatarUrl, size}) => {
+
+    size = size ? size : 200;
+
     return (
         <div>
-            <img src={avatarUrl} alt="profil tweet" className="avatar" width={200} height={200}/>
+            <img src={avatarUrl} alt="profil tweet" className="avatar" width={size} height={size}/>
         </div>
     )
 }
