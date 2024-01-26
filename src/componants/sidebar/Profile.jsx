@@ -13,7 +13,6 @@ import ImgProfile from "../fonctionnels/ImgProfile";
 import datas from "../../assets/tweets-x.json"
 import iconVerified from "../../assets/icons/Verified.svg"
 
-
 export default function Profile() {
 
     const after = {

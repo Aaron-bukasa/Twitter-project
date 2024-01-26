@@ -1,6 +1,6 @@
 import Header from "../componants/Header";
 import TweetEditor from "../componants/TweetEditor";
-import Tweets from "../componants/Tweets";
+import { UserPosts } from './Tweets';
 
 export default function Timeline() {
 
@@ -8,7 +8,7 @@ export default function Timeline() {
    <div className="max-w-screen-md w-full timeline">
       <Header />
       <TweetEditor />
-      <Tweets />
+      <UserPosts />
    </div>
   )
 }
