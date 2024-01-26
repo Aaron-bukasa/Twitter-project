@@ -33,7 +33,7 @@ export default function Sidebar() {
                     <Side link="messages" imgUrl={iconMessages} txt="Messages" styleClass="hover:bg-[#181818]" />
                 </div>
                 <div>
-                    <ide link="bookmarks" imgUrl={iconBookmarks} txt="Bookmarks" styleClass="hover:bg-[#181818]" />
+                    <Side link="bookmarks" imgUrl={iconBookmarks} txt="Bookmarks" styleClass="hover:bg-[#181818]" />
                 </div>
                 <div className="hidden sm:block">
                     <Side link="lists" imgUrl={iconLists} txt="Lists" styleClass="hhover:bg-[#181818]" />

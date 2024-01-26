@@ -18,6 +18,8 @@ import settings from './assets/icons/Settings.svg';
 import iconVerified from "./assets/icons/Verified.svg"
 import datas from "./assets/tweets-x.json"
 import Avatar from "./componants/fonctionnels/Avatar";
+import { UserProfil } from "./componants/Tweets";
+
 
 export default function App() {
   return (
@@ -33,6 +35,8 @@ export default function App() {
           <Route path='/lists' element={<Lists />} />
           <Route path='/bukasa_mba/*' element={<Profile />} />
           <Route path='/more' element={<More />} />
+          {/* <Route path='/user_profil/*' element={<TweetsProfil />} /> */}
+          <Route path="/userProfil/*" element={<UserProfil />} />
         </Routes>
         <div className="hidden min-w-342px max-w-380px ml-5 mt-5 home-aside fixed top-0">
           <div className='home-aside-head'>

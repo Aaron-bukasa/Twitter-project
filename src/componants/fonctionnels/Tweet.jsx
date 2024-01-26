@@ -2,8 +2,10 @@ import Avatar from "./Avatar";
 import TweetActions from "./TweetActions";
 import Image from "./Image";
 import iconVerified from "../../assets/icons/Verified.svg"
+import { useRef } from "react";
+import { Link } from "react-router-dom";
 
-export default function Tweet({authorUrl, isVerified, source, urlTweetImg, date, text}) {
+export default function Tweet({authorUrl, isVerified, source, urlTweetImg, date, text, originLikes, reposts, email, id, onHandleClick}) {
 
     const newDate = new Date(date);
     const stringDate = newDate.toLocaleString();
@@ -15,11 +17,13 @@ export default function Tweet({authorUrl, isVerified, source, urlTweetImg, date,
             <div className="tweet-image" style={{display: "none"}}>
                 <img src={urlTweetImg} alt="Image tweet" />
             </div>
-                    
+
     return (
-        <li className="flex gap-x-5 w-full py-1.5 px-5 border-b-2 border-solid border-gray-800 hover:bg-[#080808] hover:cursor-pointer">
+        <div className="flex gap-x-5 w-full py-1.5 px-5 border-b-2 border-solid border-gray-800 hover:bg-[#080808] hover:cursor-pointer" >
             <div className="shrink-0">
-                <Avatar avatarUrl={authorUrl}/>
+                <Link to='userProfil' id={id} data-user={id} onClick={onHandleClick}>
+                    <Avatar avatarUrl={authorUrl} />
+                </Link>               
             </div>
             <div className="w-full">
                 <div className="flex mb-2">
@@ -28,7 +32,7 @@ export default function Tweet({authorUrl, isVerified, source, urlTweetImg, date,
                         {verified}
                     </p>
                     <p className="text-gray-500">
-                        <span>@{source} . </span>
+                        <span>{email}</span>
                         <span>{stringDate}</span>
                     </p>
                 </div>
@@ -38,8 +42,8 @@ export default function Tweet({authorUrl, isVerified, source, urlTweetImg, date,
                     </p>
                     {urlImg}
                 </div>
-                <TweetActions />
+                <TweetActions originLikes={originLikes} reposts={reposts} />
             </div>
-        </li>
+        </div>
     );
 }
