@@ -3,7 +3,6 @@ import Notifications from "./componants/sidebar/Notifications"
 import Messages from "./componants/sidebar/Messages"
 import Bookmarks from "./componants/sidebar/Bookmarks"
 import Lists from "./componants/sidebar/Lists"
-import Profile from "./componants/sidebar/Profile"
 import More from "./componants/sidebar/More"
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 import Sidebar from './componants/Sidebar';
@@ -18,10 +17,10 @@ import settings from './assets/icons/Settings.svg';
 import iconVerified from "./assets/icons/Verified.svg"
 import datas from "./assets/tweets-x.json"
 import Avatar from "./componants/fonctionnels/Avatar";
-import { UserProfil } from "./componants/Tweets";
-
+import ProfileTweet from "./componants/fonctionnels/ProfileTweet";
 
 export default function App() {
+
   return (
    <div id='container' className="flex justify-center relative">
       <BrowserRouter>
@@ -33,10 +32,10 @@ export default function App() {
           <Route path='/messages' element={<Messages />} />
           <Route path='/bookmarks' element={<Bookmarks />} />
           <Route path='/lists' element={<Lists />} />
-          <Route path='/bukasa_mba/*' element={<Profile />} />
+          {/* <Route path='/bukasa_mba/*' element={<Profile />} /> */}
           <Route path='/more' element={<More />} />
           {/* <Route path='/user_profil/*' element={<TweetsProfil />} /> */}
-          <Route path="/userProfil/*" element={<UserProfil />} />
+          <Route path="/userprofil/*" element={<ProfileTweet />} />
         </Routes>
         <div className="hidden min-w-342px max-w-380px ml-5 mt-5 home-aside fixed top-0">
           <div className='home-aside-head'>

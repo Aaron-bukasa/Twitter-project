@@ -2,10 +2,9 @@ import Avatar from "./Avatar";
 import TweetActions from "./TweetActions";
 import Image from "./Image";
 import iconVerified from "../../assets/icons/Verified.svg"
-import { useRef } from "react";
 import { Link } from "react-router-dom";
 
-export default function Tweet({authorUrl, isVerified, source, urlTweetImg, date, text, originLikes, reposts, email, id, onHandleClick}) {
+export default function Tweet({authorUrl, isVerified, source, urlTweetImg, date, text, originLikes, reposts, email, id, like, repost}) {
 
     const newDate = new Date(date);
     const stringDate = newDate.toLocaleString();
@@ -17,11 +16,10 @@ export default function Tweet({authorUrl, isVerified, source, urlTweetImg, date,
             <div className="tweet-image" style={{display: "none"}}>
                 <img src={urlTweetImg} alt="Image tweet" />
             </div>
-
     return (
         <div className="flex gap-x-5 w-full py-1.5 px-5 border-b-2 border-solid border-gray-800 hover:bg-[#080808] hover:cursor-pointer" >
-            <div className="shrink-0">
-                <Link to='userProfil' id={id} data-user={id} onClick={onHandleClick}>
+            <div className="shrink-0 avatar-tweet" data-id={id} >
+                <Link to={`userprofil/${id}`}>
                     <Avatar avatarUrl={authorUrl} />
                 </Link>               
             </div>
@@ -42,7 +40,7 @@ export default function Tweet({authorUrl, isVerified, source, urlTweetImg, date,
                     </p>
                     {urlImg}
                 </div>
-                <TweetActions originLikes={originLikes} reposts={reposts} />
+                <TweetActions like={like} repost={repost} />
             </div>
         </div>
     );
