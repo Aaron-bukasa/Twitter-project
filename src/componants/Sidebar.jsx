@@ -12,8 +12,23 @@ import iconMore2 from "../assets/icons/More-2.svg";
 import Image from "./fonctionnels/Image";
 import { createPortal } from "react-dom";
 import ImgProfile from "./fonctionnels/ImgProfile";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 export default function Sidebar() {
+
+    const [user, setUser] = useState();
+
+    useEffect(() => {
+        axios.get("https://my-json-server.typicode.com/amare53/twiterdb/users/1")
+          .then((response) => {
+            setUser(response.data);
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+      }, []);
+
     return (
         <div className="flex-shrink-0 xl:min-w-64 sidebar">
             <div className="flex justify-between sm:flex-col nav">
@@ -39,7 +54,7 @@ export default function Sidebar() {
                     <Side link="lists" imgUrl={iconLists} txt="Lists" styleClass="hhover:bg-[#181818]" />
                 </div>
                 <div>
-                    <Side link="bukasa_mba" imgUrl={iconProfile} txt="Profile" styleClass="hover:bg-[#181818]" />
+                    <Side link="userprofil/1" imgUrl={iconProfile} txt="Profile" styleClass="hover:bg-[#181818]" />
                 </div>
                 <div className="hidden sm:block">
                     <Side link="more" imgUrl={iconMore} txt="More" styleClass="hover:bg-[#181818]" />
@@ -51,8 +66,8 @@ export default function Sidebar() {
                 <ImgProfile size={70} />
                 <div className="w-full justify-between sm:hidden xl:flex">
                     <div className="text-sm">
-                        <p>Ardev</p>
-                        <p className="text-gray-500">@bukasa_mba</p>
+                        <p>{user?.name}</p>
+                        <p className="text-gray-500">{user?.email}</p>
                     </div>
                     <Image imgUrl={iconMore2} altImg="icon more"/>
                 </div>

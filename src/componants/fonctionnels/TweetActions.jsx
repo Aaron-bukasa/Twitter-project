@@ -1,14 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 
-export default function TweetActions({originLikes, reposts}) {
+export default function TweetActions({like, repost}) {
 
-    const [likes, setLikes] = useState(0);
+    const [likes, setLikes] = useState(like);
+    const [reposts, setReposts] = useState(repost)
     const [isActive, setIsActive] = useState(false);
   
     const handleLike = () => {
         
         setIsActive(!isActive);
-        !isActive ? setLikes(likes + 1) : setLikes(likes - 1)      
+        !isActive ? setLikes(likes + 1) : setLikes(likes - 1)
     };
 
     const style = {
