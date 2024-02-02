@@ -4,40 +4,52 @@ import Tweet from "../fonctionnels/Tweet";
 
 function Post() {
 
-    const [users, setUsers] = useState([]);
-    const [posts, setPosts] = useState([]);
-
     const address = window.location.pathname;
-    const index = address.match(/[(0-9)]/)[0];
+    const index = address.match(/\/(\d+)/)?.[1];
+
+    const [users, setUsers] = useState([]);
+    const [userPosts, setUserPosts] = useState([]);
+    const [comments, setComments] = useState([]);
 
     useEffect(() => {
-        axios.get("https://my-json-server.typicode.com/amare53/twiterdb/users")
-          .then((response) => {
-            setUsers(response.data);
-          })
-          .catch((error) => {
-            console.error(error);
-          });
-      }, []);
+      axios.get("https://my-json-server.typicode.com/amare53/twiterdb/users")
+        .then((response) => {
+          setUsers(response.data);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }, []);
 
     useEffect(() => {
-        axios.get("https://my-json-server.typicode.com/amare53/twiterdb/posts")
+        axios.get(`https://my-json-server.typicode.com/amare53/twiterdb/posts?userId=${index}`)
           .then((response) => {
-            return response.data;
-          })
-          .then((data) => {
-            console.log(data.filter((post) => post.userId === index));
+            setUserPosts(response.data);
           })
           .catch((error) => {
             console.error(error);
           });
     }, []);
 
+    useEffect(() => {
+      axios.get("https://my-json-server.typicode.com/amare53/twiterdb/comments")
+        .then((response) => {
+          setComments(response.data);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }, []);
+  
+    const getComment = (id) => {
+      const userComment = comments.filter((comment) => comment.postId === id);
+      return userComment.length;
+    }
+
     return (
         <div>
-            <h2 className='text-xl my-8'>mes Postes</h2>
             <ul className="tweets">
-                {posts.map((post) => (
+                {userPosts.map((post) => (
                     <li key={post.id}>
                     <Tweet
                         id = {post.id}
@@ -46,6 +58,9 @@ function Post() {
                         email={users.find((user) => user.id === post.userId)?.email}
                         urlTweetImg={post.url}
                         text={post.body}
+                        like={post.like}
+                        repost={post.repost}
+                        comment={getComment(post.userId)}
                     />
                     </li>
                 ))}

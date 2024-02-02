@@ -2,7 +2,6 @@ import { Route, Routes } from "react-router-dom";
 import Header from "../Header";
 import Post from "../Profile/Post";
 import Reponses from "../Profile/Reponses"
-import TweetsManquants from "../Profile/TweetsManquants"
 import Medias from "../Profile/Medias"
 import Jaime from "../Profile/Jaime"
 import Side from "./Side";
@@ -17,7 +16,7 @@ export default function ProfileTweet() {
 
     const [user, setUser] = useState(null)
     const address = window.location.pathname;
-    const index = address.match(/[(0-9)]/)[0];
+    const index = address.match(/\/(\d+)/)?.[1];
 
     useEffect(() => {
         axios.get(`https://my-json-server.typicode.com/amare53/twiterdb/users/${index}`)
@@ -75,15 +74,13 @@ export default function ProfileTweet() {
                 <div className="flex justify-between text-xl font-bold">
                     <Side link={`/${index}`} txt="Post" styleClass="profil-anchor" />
                     <Side link="reponses" txt="Poponses" styleClass="profil-anchor" />
-                    <Side link="tweetsManquants" txt="Tweets Manquants" styleClass="profil-anchor" />
                     <Side link="medias" txt="Medias" styleClass="profil-anchor" />
                     <Side link="jaime" txt="Jaime" styleClass="profil-anchor" />
                 </div>
                 <div className="flex justify-center">
                     <Routes>
-                        <Route path="/" element={<Post />} />
+                        <Route path={`/:${index}`} element={<Post />} />
                         <Route path="/reponses" element={<Reponses />} />
-                        <Route path="/TweetsManquants" element={<TweetsManquants />} />
                         <Route path="/Medias" element={<Medias />} />
                         <Route path="/jaime" element={<Jaime />} />
                         <Route path="/" element={<Post />} />
