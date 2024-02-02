@@ -5,6 +5,7 @@ import React, { useState, useEffect } from "react";
 export default function UserPosts() {
   const [posts, setPosts] = useState([]);
   const [users, setUsers] = useState([]);
+  const [comments, setComments] = useState([]);
 
   useEffect(() => {
     axios.get("https://my-json-server.typicode.com/amare53/twiterdb/posts")
@@ -15,6 +16,21 @@ export default function UserPosts() {
         console.error(error);
       });
   }, []);
+
+  useEffect(() => {
+    axios.get("https://my-json-server.typicode.com/amare53/twiterdb/comments")
+      .then((response) => {
+        setComments(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
+  const getComment = (id) => {
+    const userComment = comments.filter((comment) => comment.postId === id);
+    return userComment.length;
+  }
 
   useEffect(() => {
     axios.get("https://my-json-server.typicode.com/amare53/twiterdb/users")
@@ -39,6 +55,7 @@ export default function UserPosts() {
             text={post.body}
             like={post.like}
             repost={post.repost}
+            comment={getComment(post.userId)}
         />
         </li>
       ))}

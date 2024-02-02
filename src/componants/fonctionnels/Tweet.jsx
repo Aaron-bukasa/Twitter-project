@@ -4,7 +4,7 @@ import Image from "./Image";
 import iconVerified from "../../assets/icons/Verified.svg"
 import { Link } from "react-router-dom";
 
-export default function Tweet({authorUrl, isVerified, source, urlTweetImg, date, text, originLikes, reposts, email, id, like, repost}) {
+export default function Tweet({authorUrl, isVerified, source, urlTweetImg, date, text, originLikes, reposts, email, id, like, repost, comment}) {
 
     const newDate = new Date(date);
     const stringDate = newDate.toLocaleString();
@@ -40,7 +40,7 @@ export default function Tweet({authorUrl, isVerified, source, urlTweetImg, date,
                     </p>
                     {urlImg}
                 </div>
-                <TweetActions like={like} repost={repost} />
+                <TweetActions like={like} repost={repost} comment={comment} />
             </div>
         </div>
     );
