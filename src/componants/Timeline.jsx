@@ -6,7 +6,7 @@ export default function Timeline() {
 
   return (
    <div className="max-w-screen-md w-full timeline">
-      <Header />
+      <Header title="Home" />
       <TweetEditor />
       <UserPosts />
    </div>

@@ -4,13 +4,24 @@ import iconPoll from "../assets/icons/Poll.svg";
 import iconEmoji from "../assets/icons/Emoji.svg";
 import iconSchedule from "../assets/icons/Schedule.svg";
 import Input from "./fonctionnels/Input";
+import { useRef } from "react";
 
 function TweetEditorForm() {
+
+    const inputRef = useRef();
+
+    const handleClick = () => {
+        const currentValue = inputRef.current.value;
+        console.log(currentValue);
+    }
+
     return (
         <div className="w-full tweet-editor-form">
             
             <div className="tweet-editor-buttons">
-                <Input placeholderInput="What's happening" idInput="newTweet" />
+                <form action="" ref={inputRef}>
+                    <Input placeholderInput="What's happening" idInput="newTweet" />
+                </form>
                 <div className="flex justify-between">
                     <div className="flex gap-x-8">
                         <div className="p-2 rounded-full hover:bg-[#0a171f]">
@@ -49,7 +60,12 @@ function TweetEditorForm() {
                             </svg>
                         </div>
                     </div>
-                    <button className="bg-blue-500 w-24 text-center py-2 rounded-3xl hover:opacity-80 hover:cursor-pointer">Tweet</button>
+                    <button 
+                        type="submit" 
+                        onClick={handleClick} 
+                        className="bg-blue-500 w-24 text-center py-2 rounded-3xl hover:opacity-80 hover:cursor-pointer">
+                            Tweet
+                    </button>
                 </div>
             </div>
         </div>
