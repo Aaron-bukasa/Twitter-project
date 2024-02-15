@@ -2,7 +2,7 @@ import Tweet from "./fonctionnels/Tweet";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 
-export default function UserPosts() {
+export default function UserPosts({localTweet}) {
   const [posts, setPosts] = useState([]);
   const [users, setUsers] = useState([]);
   const [comments, setComments] = useState([]);
@@ -10,12 +10,13 @@ export default function UserPosts() {
   useEffect(() => {
     axios.get("https://my-json-server.typicode.com/amare53/twiterdb/posts")
       .then((response) => {
-        setPosts(response.data);
+        let allPosts = (localTweet === undefined) ? response.data : localTweet.concat(response.data);
+        setPosts(allPosts)
       })
       .catch((error) => {
         console.error(error);
       });
-  }, []);
+  }, [localTweet]);
 
   useEffect(() => {
     axios.get("https://my-json-server.typicode.com/amare53/twiterdb/comments")
@@ -41,21 +42,21 @@ export default function UserPosts() {
         console.error(error);
       });
   }, []);
-
   return (
     <ul className="tweets">
       {posts.map((post) => (
-        <li key={post.id}>
+        <li key={post?.id}>
           <Tweet
             id = {post.id}
-            authorUrl = {users.find((user) => user.id === post.userId)?.thumbnailProfil}
-            source={users.find((user) => user.id === post.userId)?.name}
-            email={users.find((user) => user.id === post.userId)?.email}
+            authorUrl = {post.authorUrl ? post.authorUrl : (users.find((user) => user.id === post.userId)?.thumbnailProfil)}
+            source={post.source ? post.source : (users.find((user) => user.id === post.userId)?.name)}
+            email={post.email ? post.email : (users.find((user) => user.id === post.userId)?.email)}
             urlTweetImg={post.url}
             text={post.body}
             like={post.like}
             repost={post.repost}
             comment={getComment(post.userId)}
+            date = {post.date}
         />
         </li>
       ))}

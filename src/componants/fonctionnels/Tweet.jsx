@@ -25,13 +25,13 @@ export default function Tweet(props) {
             </div>
             <div className="w-full">
                 <div className="flex mb-2">
-                    <p>{props.source}</p>
+                    <p>{props.source} </p>
                     <p>
                         {verified}
                     </p>
                     <p className="text-gray-500">
                         <span>{props.email}</span>
-                        <span></span>
+                        <span> {props.date}</span>
                     </p>
                 </div>
                 <div>
