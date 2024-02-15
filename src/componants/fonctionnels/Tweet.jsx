@@ -31,7 +31,7 @@ export default function Tweet(props) {
                     </p>
                     <p className="text-gray-500">
                         <span>{props.email}</span>
-                        <span> {props.date}</span>
+                        <span> {props.date} </span>
                     </p>
                 </div>
                 <div>
