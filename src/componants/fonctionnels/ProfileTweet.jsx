@@ -16,7 +16,7 @@ export default function ProfileTweet() {
 
     const [user, setUser] = useState(null)
     const address = window.location.pathname;
-    const index = address.match(/\/(\d+)/)?.[1];
+    const index = address.match(/\/(\d+)/)?.[0];
 
     useEffect(() => {
         axios.get(`https://my-json-server.typicode.com/amare53/twiterdb/users/${index}`)
@@ -34,7 +34,7 @@ export default function ProfileTweet() {
 
     return (
         <div className="max-w-screen-md w-full">
-            <Header />
+            <Header title={user?.name} />
            <div>
                 <div className="w-full h-64">
                     <Image imgUrl={user?.thumbnailProfil} className="w-full h-full object-cover" />

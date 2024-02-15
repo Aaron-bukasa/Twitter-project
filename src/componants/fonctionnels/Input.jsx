@@ -1,6 +1,6 @@
 import { Children } from "react";
 
-export default function Input({idInput, typeInput, urlImage, placeholderInput, inputStyle, className}) {
+export default function Input({idInput, typeInput, urlImage, placeholderInput, inputStyle}) {
 
     typeInput = typeInput ? typeInput : 'text';
     placeholderInput && placeholderInput;
