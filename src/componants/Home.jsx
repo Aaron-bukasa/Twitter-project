@@ -32,7 +32,7 @@ import Avatar from "./fonctionnels/Avatar";
             <Route path='/bookmarks' element={<Bookmarks />} />
             <Route path='/lists' element={<Lists />} />
             <Route path='/more' element={<More />} />
-            <Route path="/userprofil/*" element={<ProfileTweet />} />
+            <Route path="/userprofil/*" element={<ProfileTweet id={id} />} />
           </Routes>
           <div className="hidden min-w-342px max-w-380px ml-5 mt-5 home-aside fixed top-0">
             <div className='home-aside-head'>

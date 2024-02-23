@@ -13,14 +13,16 @@ import closeIcon from "../../assets/icons/close.svg"
 import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 
-export default function ProfileTweet() {
+export default function ProfileTweet(props) {
 
     const usernameRef = useRef();
     const bioRef = useRef();
     const bannereRef = useRef();
-    const imgProfile = useRef();
+    const imgProfileRef = useRef();
     const localisationRef = useRef();
     const websiteRef = useRef();
+
+    const [profil, setProfil] = useState([]);
 
     const [user, setUser] = useState(null);
     const [isHidden, setIsHidden] = useState(false);
@@ -28,14 +30,14 @@ export default function ProfileTweet() {
     const index = address.match(/\/(\d+)/)?.[0];
 
     useEffect(() => {
-        axios.get(`https://my-json-server.typicode.com/amare53/twiterdb/users/${index}`)
+        axios.get(`http://localhost:3000/auth/users/${props.id}`)
           .then((response) => {
             setUser(response.data);
           })
           .catch((error) => {
             console.error(error);
           });
-    }, []);
+    }, [usernameRef, bioRef,]);
 
     const handleOpen = () => {
         !isHidden ? setIsHidden(true) : setIsHidden(false);
@@ -49,31 +51,40 @@ export default function ProfileTweet() {
         after: "content-['_↗'] block absolute w-full h-full bg-red-400"
     }
 
-    const uploadProfile = () => {
+    const uploadProfile = (event) => {
+        event.preventDefault();
 
-        const username = usernameRef.current.value;
+        const usernameValue = usernameRef.current.value;
         const bioValue = bioRef.current.value;
         const bannereValue = bannereRef.current.files[0];
-        const imgProfileValue = imgProfile.current.files[0];
+        const imgProfileValue = imgProfileRef.current.files[0];
         const localisationValue = localisationRef.current.value;
         const websiteValue = websiteRef.current.value;
 
+        setProfil([usernameValue, bioValue, bannereValue, imgProfileValue, localisationValue, websiteValue])
 
         const formBannere = new FormData();
         formBannere.append('image', bannereValue);
         const formImgProfile = new FormData();
-        formImgProfile.append('image', formImgProfile);
+        formImgProfile.append('image', imgProfileValue);
 
-        axios.post('http://localhost:3000/profils//:id', {
-            formBannere, formImgProfile
+        axios.post(`http://localhost:3000/auth/users/${props.id}`, {
+            usernameValue,
+            bioValue,
+            formBannere, 
+            formImgProfile,
+            localisationValue,
+            websiteValue
         })
-            .then(response => {
-                console.log(response.data);
-            })
-            .catch(error => {
-                console.error('Error uploading image:', error);
-            });
+        .then(response => {
+            console.log(response.data);
+        })
+        .catch(error => {
+            console.error('Error uploading image:', error);
+        });
     };
+
+    console.log(profil);
 
     return (
         <>
@@ -156,7 +167,7 @@ export default function ProfileTweet() {
                         </label>
                         <label htmlFor="imgProfil" className="flex relative flex-col  w-[112px] h-[112px] rounded-full -translate-y-12 translate-x-5 bg-[#5b70832d]">
                             <img src="" alt="" className="w-full h-full rounded-full absolute" />
-                            <input ref={imgProfile} type="file" id="imgProfil" name="imgProfil" className="hidden" accept="image/*" />
+                            <input ref={imgProfileRef} type="file" id="imgProfil" name="imgProfil" className="hidden" accept="image/*" />
                         </label>
                     </div>
                     <div>
@@ -164,13 +175,13 @@ export default function ProfileTweet() {
                             <span className="text-gray-500 text-lg">username</span>
                             <input ref={usernameRef} type="text" id="username" name="username" className="bg-transparent" />
                         </label>
-                        <label ref={bioRef} htmlFor="bio" className="flex flex-col justify-between border-2 border-gray-700 h-[70px] pt-[8px] px-[12px] my-3 w-full rounded">
+                        <label htmlFor="bio" className="flex flex-col justify-between border-2 border-gray-700 h-[70px] pt-[8px] px-[12px] my-3 w-full rounded">
                             <span className="text-gray-500 text-lg">Bio</span>
                             <input ref={bioRef} type="text" name="bio" id="bio" className="bg-transparent" />
                         </label>
-                        <label ref={localisationRef} htmlFor="localisation" className="flex flex-col justify-between border-2 border-gray-700 h-[70px] pt-[8px] px-[12px] my-3 w-full rounded">
+                        <label htmlFor="localisation" className="flex flex-col justify-between border-2 border-gray-700 h-[70px] pt-[8px] px-[12px] my-3 w-full rounded">
                             <span className="text-gray-500 text-lg">Localisation</span>
-                            <input type="text" id="localisation" name="localisation" className="bg-transparent" />
+                            <input ref={localisationRef} type="text" id="localisation" name="localisation" className="bg-transparent" />
                         </label>
                         <label 
                             htmlFor="website" 

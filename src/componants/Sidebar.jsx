@@ -20,7 +20,7 @@ export default function Sidebar(props) {
     const [user, setUser] = useState();
 
     useEffect(() => {
-        axios.get(`https://my-json-server.typicode.com/amare53/twiterdb/users/${props.id}`)
+        axios.get(`http://localhost:3000/auth/users/${props.id}`)
           .then((response) => {
             setUser(response.data);
           })
@@ -54,7 +54,7 @@ export default function Sidebar(props) {
                     <Side link="lists" imgUrl={iconLists} txt="Lists" styleClass="hover:bg-[#181818]" />
                 </div>
                 <div>
-                    <Side link={"userprofil/"+1} imgUrl={iconProfile} txt="Profile" styleClass="hover:bg-[#181818]" />
+                    <Side link={"userprofil/"+props.id} imgUrl={iconProfile} txt="Profile" styleClass="hover:bg-[#181818]" />
                 </div>
                 <div className="hidden sm:block">
                     <Side link="more" imgUrl={iconMore} txt="More" styleClass="hover:bg-[#181818]" />
@@ -66,7 +66,7 @@ export default function Sidebar(props) {
                 <ImgProfile size={70} />
                 <div className="w-full justify-between sm:hidden xl:flex">
                     <div className="text-sm">
-                        <p>{user?.name}</p>
+                        <p>{user?.username}</p>
                         <p className="text-gray-500">{user?.email}</p>
                     </div>
                     <Image imgUrl={iconMore2} altImg="icon more"/>
