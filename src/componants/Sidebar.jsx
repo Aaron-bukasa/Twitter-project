@@ -12,15 +12,15 @@ import iconMore2 from "../assets/icons/More-2.svg";
 import Image from "./fonctionnels/Image";
 import { createPortal } from "react-dom";
 import ImgProfile from "./fonctionnels/ImgProfile";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 
-export default function Sidebar() {
+export default function Sidebar(props) {
 
     const [user, setUser] = useState();
 
     useEffect(() => {
-        axios.get("https://my-json-server.typicode.com/amare53/twiterdb/users/1")
+        axios.get(`https://my-json-server.typicode.com/amare53/twiterdb/users/${props.id}`)
           .then((response) => {
             setUser(response.data);
           })
@@ -51,10 +51,10 @@ export default function Sidebar() {
                     <Side link="bookmarks" imgUrl={iconBookmarks} txt="Bookmarks" styleClass="hover:bg-[#181818]" />
                 </div>
                 <div className="hidden sm:block">
-                    <Side link="lists" imgUrl={iconLists} txt="Lists" styleClass="hhover:bg-[#181818]" />
+                    <Side link="lists" imgUrl={iconLists} txt="Lists" styleClass="hover:bg-[#181818]" />
                 </div>
                 <div>
-                    <Side link="userprofil/1" imgUrl={iconProfile} txt="Profile" styleClass="hover:bg-[#181818]" />
+                    <Side link={"userprofil/"+1} imgUrl={iconProfile} txt="Profile" styleClass="hover:bg-[#181818]" />
                 </div>
                 <div className="hidden sm:block">
                     <Side link="more" imgUrl={iconMore} txt="More" styleClass="hover:bg-[#181818]" />
