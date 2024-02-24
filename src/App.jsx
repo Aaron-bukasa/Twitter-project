@@ -51,8 +51,6 @@ export default function App() {
       const emailSign = emailSignRef.current.value;
       const passwordSign = passwordSignRef.current.value;
 
-      console.log(username, emailSign, passwordSign);
-
       const response = await axios.post('http://localhost:3000/auth/signup', {
         username: username,
         email: emailSign,

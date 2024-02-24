@@ -22,12 +22,15 @@ export default function Sidebar(props) {
     useEffect(() => {
         axios.get(`http://localhost:3000/auth/users/${props.id}`)
           .then((response) => {
+            console.log(user);
             setUser(response.data);
           })
           .catch((error) => {
             console.error(error);
           });
       }, []);
+
+      console.log(user);
 
     return (
         <div className="flex-shrink-0 xl:min-w-64 sidebar">
