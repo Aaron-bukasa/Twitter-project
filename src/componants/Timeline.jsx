@@ -4,7 +4,7 @@ import UserPosts from "./Tweets";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-export default function Timeline() {
+export default function Timeline({id}) {
 
   const [localTweet, setLocalTweet] = useState();
   const [tabLocalTweet, setTabLocalTweet] = useState([]);
@@ -20,7 +20,7 @@ export default function Timeline() {
   return (
    <div className="max-w-screen-md w-full timeline">
       <Header title="Home" />
-      <TweetEditor localTweet={localTweet} setLocalTweet={setLocalTweet} />
+      <TweetEditor id={id} localTweet={localTweet} setLocalTweet={setLocalTweet} />
       <UserPosts localTweet={tabLocalTweet} />
    </div>
   )

@@ -12,15 +12,15 @@ import iconMore2 from "../assets/icons/More-2.svg";
 import Image from "./fonctionnels/Image";
 import { createPortal } from "react-dom";
 import ImgProfile from "./fonctionnels/ImgProfile";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 
-export default function Sidebar() {
+export default function Sidebar(props) {
 
     const [user, setUser] = useState();
 
     useEffect(() => {
-        axios.get("https://my-json-server.typicode.com/amare53/twiterdb/users/1")
+        axios.get(`http://localhost:3000/auth/users/${props.id}`)
           .then((response) => {
             setUser(response.data);
           })
@@ -28,7 +28,7 @@ export default function Sidebar() {
             console.error(error);
           });
       }, []);
-
+    
     return (
         <div className="flex-shrink-0 xl:min-w-64 sidebar">
             <div className="flex justify-between sm:flex-col nav">
@@ -51,10 +51,10 @@ export default function Sidebar() {
                     <Side link="bookmarks" imgUrl={iconBookmarks} txt="Bookmarks" styleClass="hover:bg-[#181818]" />
                 </div>
                 <div className="hidden sm:block">
-                    <Side link="lists" imgUrl={iconLists} txt="Lists" styleClass="hhover:bg-[#181818]" />
+                    <Side link="lists" imgUrl={iconLists} txt="Lists" styleClass="hover:bg-[#181818]" />
                 </div>
                 <div>
-                    <Side link="userprofil/1" imgUrl={iconProfile} txt="Profile" styleClass="hover:bg-[#181818]" />
+                    <Side link={"userprofil/"+props.id} imgUrl={iconProfile} txt="Profile" styleClass="hover:bg-[#181818]" />
                 </div>
                 <div className="hidden sm:block">
                     <Side link="more" imgUrl={iconMore} txt="More" styleClass="hover:bg-[#181818]" />
@@ -63,10 +63,15 @@ export default function Sidebar() {
                 <ModaleAddTweet />
             </div>
             <div className="flex items-center gap-x-4 mb-4 p-3 rounded-2xl max-w-64 login-out hover:bg-[#181818] hover:cursor-pointer">
-                <ImgProfile size={70} />
+                <img    src={user?.profil?.thumbnailProfil} 
+                        width={70} 
+                        height={70} 
+                        alt="profile Aaron bukasa" 
+                        className="rounded-full"/>
+
                 <div className="w-full justify-between sm:hidden xl:flex">
                     <div className="text-sm">
-                        <p>{user?.name}</p>
+                        <p>{user?.username}</p>
                         <p className="text-gray-500">{user?.email}</p>
                     </div>
                     <Image imgUrl={iconMore2} altImg="icon more"/>
