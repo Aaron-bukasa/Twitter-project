@@ -84,21 +84,17 @@ export default function ProfileTweet(props) {
         });
     };
 
-    console.log(profil);
-
     return (
         <>
             <div className="max-w-screen-md w-full">
                 <Header title={user?.name} />
             <div>
                     <div className="w-full h-64">
-                        <Image imgUrl={user?.thumbnailProfil} className="w-full h-full object-cover" />
+                        <Image imgUrl={user?.profil?.bannere} className="w-full h-full object-cover" />
                     </div>
                     <div className="flex justify-between items-start px-4" >
-                        <div className="relative bottom-16 ">
-                            <div className="profil-img-Hover">
-                                <ImageProfile size={150} urlProfil={user?.profil}  />
-                            </div>
+                        <div className="-translate-y-20 rounded-full bg-black overflow-hidden">
+                            <img src={user?.profil?.thumbnailProfil} alt="image profil" className="rounded-full w-[150px] h-[150px] "/>
                         </div>
                         <div onClick={handleOpen} className="border-2 py-1 px-4 mt-4 font-bold rounded-full border-gray-500 cursor-pointer" >Editer le profil</div>
                     </div>
@@ -237,11 +233,3 @@ function HomeFollow() {
     </ul>
     )
   }
-
-
-function ImageProfile({size, urlProfil}) {
-    let newSize = size ? size : 50;
-    return (
-        <img src={urlProfil} width={newSize} height={newSize} alt="image profil" className="rounded-full"/>
-    )
-}

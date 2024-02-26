@@ -2,7 +2,9 @@ import { useRef, useState } from "react";
 import axios from "axios";
 import './App.css';
 import closeIcon from "../src/assets/icons/close.svg";
-import twitterIcon from "../src/assets/icons/Twitter.svg"
+import twitterIcon from "../src/assets/icons/Twitter.svg";
+import avatarIcon from "../src/assets/icons/user.svg";
+import bannereUser from "../src/assets/icons/bannerPlaceholder.svg";
 import Home from "./componants/Home";
 
 export default function App() {
@@ -42,7 +44,7 @@ export default function App() {
       console.error('Axios error:', error);
     }
   };
-
+  
   const handleSignUp = async (event) => {
     event.preventDefault();
 
@@ -54,14 +56,17 @@ export default function App() {
       const response = await axios.post('http://localhost:3000/auth/signup', {
         username: username,
         email: emailSign,
-        password: passwordSign
+        password: passwordSign,
+        thumbnailProfil: avatarIcon,
+        bannere: bannereUser,
+        // website: '',
+        // localisation: ''
       });
 
       if (response.status === 200) {
-        const { userId, token } = response.data;
-        localStorage.setItem('token', token);
+        const userObj = response.data;
         setIsLoggedIn(true);
-        setId(userId);
+        setId(userObj.user.id);
       } else {
         console.error('Authentication failed');
       }
@@ -90,8 +95,8 @@ if (isLoggedIn) {
             </div>
             <form method="post" className="w-96 flex flex-col gap-y-5 justify-between items-left w-[40%]">
               <div>
-                <h1 className="text-[72px] font-black tracking-wider mb-7">Ça se passe <br /> maintenant</h1>
-                <h2 className="text-[42px] font-bold">Inscrivez&#8213;vous.</h2>
+                <h1 className="text-[72px] font-black tracking-wider mb-7">Twitter clone</h1>
+                <h2 className="text-[42px] font-bold">Inscrivez-vous.</h2>
               </div>
               <input type="email" ref={emailLogRef} placeholder="Email address" className="block w-[450px] pl-2.5 h-16 mb-2 border-2 border border-gray-500 bg-slate-700 " />
               <input type="password" ref={passwordLogRef} placeholder="Password" className="block w-[450px] border-gray-500 h-16 pl-2.5 mb-2 border-2 border bg-slate-700" />

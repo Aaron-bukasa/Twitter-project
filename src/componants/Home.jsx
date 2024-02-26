@@ -25,7 +25,7 @@ import Avatar from "./fonctionnels/Avatar";
         <BrowserRouter>
           <Sidebar id={id} />
           <Routes>
-            <Route path='/' element={<Timeline />} />
+            <Route path='/' element={<Timeline id={id} />} />
             <Route path='/explore' element={<Explore />} />
             <Route path='/notifications' element={<Notifications/>} />
             <Route path='/messages' element={<Messages />} />

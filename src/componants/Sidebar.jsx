@@ -22,16 +22,13 @@ export default function Sidebar(props) {
     useEffect(() => {
         axios.get(`http://localhost:3000/auth/users/${props.id}`)
           .then((response) => {
-            console.log(user);
             setUser(response.data);
           })
           .catch((error) => {
             console.error(error);
           });
       }, []);
-
-      console.log(user);
-
+    
     return (
         <div className="flex-shrink-0 xl:min-w-64 sidebar">
             <div className="flex justify-between sm:flex-col nav">
@@ -66,7 +63,12 @@ export default function Sidebar(props) {
                 <ModaleAddTweet />
             </div>
             <div className="flex items-center gap-x-4 mb-4 p-3 rounded-2xl max-w-64 login-out hover:bg-[#181818] hover:cursor-pointer">
-                <ImgProfile size={70} />
+                <img    src={user?.profil?.thumbnailProfil} 
+                        width={70} 
+                        height={70} 
+                        alt="profile Aaron bukasa" 
+                        className="rounded-full"/>
+
                 <div className="w-full justify-between sm:hidden xl:flex">
                     <div className="text-sm">
                         <p>{user?.username}</p>
